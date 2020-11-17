@@ -1,10 +1,11 @@
 <h2>To-Do List</h2>
 <ul class="">
     <li *ngFor="let item of items$ | async">
-      <input type="checkbox" [(ngModel)]="item.completed" [checked]="item.completed" (change)="modifyTask(item)">
+      <input type="checkbox" [(ngModel)]="item.completed" [checked]="item.completed" (change)="editTask(item)">
       <span class="">{{item.name}}</span>
       <a routerLink="/items/edit/{{item.id}}" routerLinkActive="active">Editar</a>
-   </li>
+      <a (click)="deleteTask(item.id)" routerLinkActive="active">Eliminar</a>
+    </li>
 </ul>
 
 <form>

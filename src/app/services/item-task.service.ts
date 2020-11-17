@@ -28,4 +28,8 @@ export class ItemTaskService {
     return this.http.put<ItemTask>(this.URL + "/item/edit", itemTask);
   }
 
+  public delete(id: number): Observable<any> {
+    return this.http.delete<any>(this.URL + "/item/" + id);
+  }
+
 }

@@ -17,13 +17,17 @@ export class ListItemsComponent implements OnInit {
 
   public newTask: string = "";
   
-  constructor(private itemTaskService: ItemTaskService) { }
+  constructor(public itemTaskService: ItemTaskService) { }
 
   ngOnInit(): void {
+    this.refreshListItems();
+  }
+
+  private refreshListItems(): void{
     this.items$ = this.itemTaskService.findByOwnerId(1);
   }
 
-  createTask(){
+  createTask(): void{
     let itemTask: ItemTask = new ItemTask();
     itemTask.name = this.newTask;
     itemTask.completed = false;
@@ -39,17 +43,23 @@ export class ListItemsComponent implements OnInit {
 
     this.itemTaskService.create(itemTask).pipe(take(1)).subscribe(
       (data: ItemTask) => { 
-        this.items$ = this.itemTaskService.findByOwnerId(1)
         console.log(itemTask); 
         this.newTask = "";
+        this.refreshListItems();
       },
       (error: any) => { console.log(error); console.error("Ocurrio un errror"); }
     )
   
   }
 
-  modifyTask(itemTask: ItemTask) {
+  editTask(itemTask: ItemTask): void {
     this.itemTaskService.edit(itemTask).pipe(take(1)).subscribe();
+  }
+
+  deleteTask(id: number): void{
+    this.itemTaskService.delete(id).pipe(take(1)).subscribe((data: any) => {
+      this.refreshListItems();
+    });
   }
 
 }

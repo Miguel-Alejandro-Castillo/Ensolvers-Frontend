@@ -1,5 +1,6 @@
 import { Task } from './task';
 
-export class FolderTask {
-    items: Array<Task>
+export class FolderTask extends Task{
+    items: Task[] = [];
+    type: string = "FOLDER";
 }

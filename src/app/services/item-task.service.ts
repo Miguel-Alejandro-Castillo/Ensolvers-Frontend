@@ -29,7 +29,7 @@ export class ItemTaskService {
   }
 
   public delete(id: number): Observable<any> {
-    return this.http.delete<any>(this.URL + "/item/" + id);
+    return this.http.delete<any>(this.URL + "/item/delete/" + id);
   }
 
 }

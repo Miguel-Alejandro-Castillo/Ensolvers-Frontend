@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ItemTask } from 'src/app/models/item-task';
@@ -33,12 +32,10 @@ export class ListItemsComponent implements OnInit {
     itemTask.completed = false;
 
     /* Probando el alta */
-
     itemTask.owner = new User();
     itemTask.owner.id = 1;
-    itemTask.owner.nickname = "admin";
-    itemTask.owner.password = "1234";
-
+    //itemTask.owner.nickname = "admin";
+    //itemTask.owner.password = "1234";
     /*                  */
 
     this.itemTaskService.create(itemTask).pipe(take(1)).subscribe(

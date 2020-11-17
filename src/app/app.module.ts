@@ -9,12 +9,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ListItemsComponent } from './components/tasks/list-items/list-items.component';
 import { EditItemComponent } from './components/tasks/edit-item/edit-item.component';
+import { ListFoldersComponent } from './components/tasks/folders/list-folders/list-folders.component';
+import { GetFolderComponent } from './components/tasks/folders/get-folder/get-folder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListItemsComponent,
-    EditItemComponent
+    EditItemComponent,
+    ListFoldersComponent,
+    GetFolderComponent
   ],
   imports: [
     HttpClientModule,

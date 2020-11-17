@@ -1,0 +1,13 @@
+<h2>Folders</h2>
+<ul class="">
+    <li *ngFor="let folder of folders$ | async">
+      <span class=""> - {{folder.name}}</span>
+      <a routerLink="/folders/get/{{folder.id}}" routerLinkActive="active">View items</a>
+      <a (click)="deleteFolder(folder.id)" routerLinkActive="active">Remove</a>
+    </li>
+</ul>
+
+<form>
+    <input  placeholder="New Folder" [(ngModel)]="newFolder" name="newFolder">
+    <button type="button" (click)="createFolder()" [disabled]="!newFolder">Add</button>
+</form>

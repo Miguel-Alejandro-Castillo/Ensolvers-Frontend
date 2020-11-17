@@ -1,8 +1,14 @@
 <h2>To-Do List</h2>
-<!--
 <ul class="">
-    <li *ngFor="let hero of [{}]">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
-  </li>
+    <li *ngFor="let item of items$ | async">
+      <input type="checkbox" [(ngModel)]="item.completed" [checked]="item.completed" (change)="modifyTask(item)">
+      <span class="">{{item.name}}</span>
+      <a routerLink="/items/edit/{{item.id}}" routerLinkActive="active">Editar</a>
+   </li>
 </ul>
--->
+
+<form>
+    <input  placeholder="New Task" [(ngModel)]="newTask" name="newTask">
+    <button type="button" (click)="createTask()" [disabled]="!newTask" >Add</button>
+</form>
+  

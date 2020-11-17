@@ -1,0 +1,7 @@
+<h2>Editing Task {{nameTask}}</h2>
+<form>
+    <input [(ngModel)]="itemTask.name" name="name">
+    <br/>
+    <button type="button" (click)="editTask()" [disabled]="!itemTask.name" >Save</button>
+    <button type="button" (click)="cancel()" >Cancel</button>
+</form>

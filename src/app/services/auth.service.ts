@@ -13,6 +13,8 @@ export class AuthService {
 
   public userLoggedIn: User;
 
+  public isUserLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); 
+
   constructor(private http: HttpClient) { }
 
   public login(username: string, password: string): Observable<any>{
@@ -23,6 +25,7 @@ export class AuthService {
       this.userLoggedIn = new User();
       this.userLoggedIn.id = response.body.id;
       this.userLoggedIn.username = response.body.username;
+      this.isUserLoggedIn$.next(true);
       return this.userLoggedIn; 
      }));
   }
@@ -31,11 +34,12 @@ export class AuthService {
     localStorage.removeItem("username");
     localStorage.removeItem("jwt");
     this.userLoggedIn = null;
+    this.isUserLoggedIn$.next(false);
   }
 
-  public isUserLoggedIn(){
+  public isUserLoggedIn() : boolean{
     const username = localStorage.getItem("username");
-    return username;
+    return username !== null;
   }
 
   public JwtToken(): string {

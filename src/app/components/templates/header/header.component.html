@@ -1,0 +1,10 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a class="navbar-brand">JavaGuides</a></div>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li>
+                <a *ngIf="authService.isUserLoggedIn()" class="nav-link" (click)=logout()>Logout</a>
+            </li>
+        </ul>
+    </nav>
+  </header>

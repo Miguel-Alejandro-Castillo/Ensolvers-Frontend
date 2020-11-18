@@ -18,6 +18,9 @@ import { MenuComponent } from './components/templates/menu/menu.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderComponent } from './components/templates/header/header.component';
+import { PrivatePageGuard } from './guards/private-page.guard';
+import { PublicPageGuard } from './guards/public-page.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     InputNewItemComponent,
     LoginComponent,
     LogoutComponent,
-    MenuComponent
+    MenuComponent,
+    HeaderComponent
   ],
   imports: [
     HttpClientModule,
@@ -42,7 +46,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule, 
     ReactiveFormsModule 
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true } ],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  PrivatePageGuard,
+  PublicPageGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

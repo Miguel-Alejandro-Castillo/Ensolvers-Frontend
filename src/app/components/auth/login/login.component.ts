@@ -13,6 +13,15 @@ export class LoginComponent implements OnInit {
 
   public password : string = "";
 
+  /*
+  errorMessage = 'Invalid Credentials';
+  successMessage: string;
+  invalidLogin = false;
+  loginSuccess = false;
+  */
+
+
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {

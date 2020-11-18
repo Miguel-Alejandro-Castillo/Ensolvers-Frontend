@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { FolderTask } from 'src/app/models/folder-task';
-import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { FolderTaskService } from 'src/app/services/folder-task.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class ListFoldersComponent implements OnInit {
 
   public newFolder: string = "";
 
-  constructor(private folderTaskService: FolderTaskService) { }
+  constructor(private authService: AuthService, private folderTaskService: FolderTaskService) { }
 
   
   ngOnInit(): void {
@@ -26,19 +26,14 @@ export class ListFoldersComponent implements OnInit {
   createFolder(): void{
     let folderTask: FolderTask = new FolderTask();
     folderTask.name = this.newFolder;
-
-    /* Probando el alta */
-    folderTask.owner = new User();
-    folderTask.owner.id = 1;
-    /*                  */
+    folderTask.owner = this.authService.getUserLoggedIn();
 
     this.folderTaskService.create(folderTask).pipe(take(1)).subscribe(
-      (data: FolderTask) => { 
-        console.log(folderTask); 
+      (data: FolderTask) => {  
         this.newFolder = "";
         this.refreshListFolders();
       },
-      (error: any) => { console.log(error); console.error("Ocurrio un errror"); }
+      (error: any) => { console.log(error);  }
     )
   
   }
@@ -54,7 +49,7 @@ export class ListFoldersComponent implements OnInit {
   }
 
   private refreshListFolders(): void{
-    this.folders$ = this.folderTaskService.findByOwnerId(1);
+    this.folders$ = this.folderTaskService.findByOwnerId(this.authService.getUserLoggedIn().id);
   }
 
 }

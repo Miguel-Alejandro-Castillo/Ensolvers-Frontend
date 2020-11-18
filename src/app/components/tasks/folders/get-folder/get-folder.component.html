@@ -1,20 +1,8 @@
 <h2>Folders > {{folderTask.name}}</h2>
 <ul class="">
     <li *ngFor="let item of items$ | async">
-      <!--
-      <input type="checkbox" [(ngModel)]="item.completed" [checked]="item.completed" (change)="editTask(item)">
-      <span class="">{{item.name}}</span>
-      <a routerLink="/items/edit/{{item.id}}" routerLinkActive="active">Edit</a>
-      <a (click)="deleteTask(item.id)" routerLinkActive="active">Remove</a>
-      -->
       <app-row-item [item]="item" (edit)="editTask($event)" (delete)="deleteTask()"></app-row-item>
     </li>
 </ul>
 
-<!--
-<form>
-    <input  placeholder="New Task" [(ngModel)]="newTask" name="newTask">
-    <button type="button" (click)="createTask()" [disabled]="!newTask">Add</button>
-</form>
--->
 <app-input-new-item [folderTaskParent]="folderTask" (create)="createTask($event)"></app-input-new-item>

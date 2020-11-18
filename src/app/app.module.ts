@@ -13,6 +13,11 @@ import { ListItemsComponent } from './components/tasks/items/list-items/list-ite
 import { EditItemComponent } from './components/tasks/items/edit-item/edit-item.component';
 import { RowItemComponent } from './components/tasks/items/row-item/row-item.component';
 import { InputNewItemComponent } from './components/tasks/items/input-new-item/input-new-item.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
+import { MenuComponent } from './components/templates/menu/menu.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AuthHttpInterceptor } from './interceptors/auth-http.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { InputNewItemComponent } from './components/tasks/items/input-new-item/i
     ListFoldersComponent,
     GetFolderComponent,
     RowItemComponent,
-    InputNewItemComponent
+    InputNewItemComponent,
+    LoginComponent,
+    LogoutComponent,
+    MenuComponent
   ],
   imports: [
     HttpClientModule,
@@ -34,7 +42,7 @@ import { InputNewItemComponent } from './components/tasks/items/input-new-item/i
     FormsModule, 
     ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

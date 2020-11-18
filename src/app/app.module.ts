@@ -44,7 +44,7 @@ import { PublicPageGuard } from './guards/public-page.guard';
     MatFormFieldModule,
     BrowserAnimationsModule,
     FormsModule, 
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
   PrivatePageGuard,

@@ -1,0 +1,4 @@
+<form>
+    <input  placeholder="New Task" [(ngModel)]="newTask" name="newTask">
+    <button type="button" (click)="createTask()" [disabled]="!newTask">Add</button>
+</form>

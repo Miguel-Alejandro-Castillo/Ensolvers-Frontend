@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { ItemTask } from 'src/app/models/item-task';
@@ -14,7 +15,7 @@ export class EditItemComponent implements OnInit {
   public itemTask: ItemTask;
   public nameTask: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private itemTaskService: ItemTaskService) { }
+  constructor(private location: Location, private router: Router, private route: ActivatedRoute, private itemTaskService: ItemTaskService) { }
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get("id"));
@@ -35,7 +36,8 @@ export class EditItemComponent implements OnInit {
   }
 
   private back(): void{
-    this.router.navigate(['/list-items']);
+    this.location.back();
+    //this.router.navigate(['/list-items']);
   }
 
 }

@@ -1,0 +1,4 @@
+<input type="checkbox" [(ngModel)]="item.completed" [checked]="item.completed" (change)="editTask(item)">
+<span class="">{{item.name}}</span>
+<a routerLink="/items/edit/{{item.id}}" routerLinkActive="active">Edit</a>
+<a (click)="deleteTask(item.id)" routerLinkActive="active">Remove</a>

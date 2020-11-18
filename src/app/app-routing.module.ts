@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditItemComponent } from './components/tasks/edit-item/edit-item.component';
 import { GetFolderComponent } from './components/tasks/folders/get-folder/get-folder.component';
 import { ListFoldersComponent } from './components/tasks/folders/list-folders/list-folders.component';
-import { ListItemsComponent } from './components/tasks/list-items/list-items.component';
+import { EditItemComponent } from './components/tasks/items/edit-item/edit-item.component';
+import { ListItemsComponent } from './components/tasks/items/list-items/list-items.component';
 
 const routes: Routes = [
   { path: 'list-items', 

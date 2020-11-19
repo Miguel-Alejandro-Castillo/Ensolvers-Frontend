@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   }
 
   menu(){
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/home']);
   }
 
   logout() {

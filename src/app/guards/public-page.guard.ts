@@ -15,7 +15,7 @@ export class PublicPageGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (this.authService.isUserLoggedIn()) {
-        this.router.navigate(['/menu']);
+        this.router.navigate(['/home']);
       }
       return !this.authService.isUserLoggedIn();
   }

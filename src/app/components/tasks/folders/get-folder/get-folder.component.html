@@ -1,8 +1,5 @@
-<h2>Folders > {{folderTask.name}}</h2>
-<ul class="">
-    <li *ngFor="let item of items$ | async">
-      <app-row-item [item]="item" (edit)="editTask($event)" (delete)="deleteTask()"></app-row-item>
-    </li>
-</ul>
-
+<h3>Folders > {{folderTask.name}}</h3>
+<div class="row" *ngFor="let item of items$ | async">
+  <app-row-item [item]="item" (edit)="editTask($event)" (delete)="deleteTask()"></app-row-item>
+</div>
 <app-input-new-item [folderTaskParent]="folderTask" (create)="createTask($event)"></app-input-new-item>

@@ -1,8 +1,7 @@
-<h2>To-Do List</h2>
-<ul class="">
-    <li *ngFor="let item of items$ | async">
-       <app-row-item [item]="item" (edit)="editTask($event)" (delete)="deleteTask()"></app-row-item>
-    </li>
-</ul>
-
-<app-input-new-item (create)="createTask($event)"></app-input-new-item>
+<h3>To-Do List</h3>
+<div *ngFor="let item of items$ | async" class="row">
+    <app-row-item [item]="item" (edit)="editTask($event)" (delete)="deleteTask()"></app-row-item>
+</div>
+<div class="row">
+    <app-input-new-item (create)="createTask($event)"></app-input-new-item>
+</div>

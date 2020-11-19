@@ -14,7 +14,7 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [PublicPageGuard] 
   },
-  { path: 'menu', 
+  { path: 'home', 
     component: MenuComponent,
     canActivate: [PrivatePageGuard]  
   },

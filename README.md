@@ -6,7 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * nodejs v10.23.0
 * npm 6.14.8
 * Angular CLI: 11.0.1
-* Visual Studio Code
 * Angular 9.0.0
 * rxjs 6.6.3
 * Visual Studio Code(optional)
